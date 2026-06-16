@@ -1,9 +1,9 @@
-/* ===========================================
+/* ======================================
    MOVE DANCE ACADEMY
-   Premium Reception
-=========================================== */
+   RECEPCIÓN PREMIUM
+====================================== */
 
-/* ---------- MENSAJES ---------- */
+/* MENSAJES PRINCIPALES */
 
 const messages = [
 
@@ -17,190 +17,218 @@ const messages = [
 
     "💃 Disfruta cada paso 💃",
 
-    "🩷 Nunca dejes de bailar 🩷",
-
-    "⭐ Cree en ti y alcanza tus sueños ⭐",
-
-    "🎀 Todo gran bailarín comenzó con un primer paso 🎀"
+    "🩷 Nunca dejes de bailar 🩷"
 
 ];
 
+/* FRASES INSPIRADORAS */
 
-/* ---------- MENSAJE ROTATIVO ---------- */
+const quotes = [
 
-let currentMessage = 0;
+    "💖 La disciplina supera al talento.",
 
-const welcome = document.getElementById("welcomeMessage");
+    "🌸 Cree en ti.",
 
-function changeMessage() {
+    "🩰 Nunca dejes de soñar.",
 
-    if (!welcome) return;
+    "✨ Cada paso cuenta.",
 
-    welcome.style.opacity = 0;
+    "⭐ El esfuerzo de hoy es el logro de mañana.",
 
-    setTimeout(() => {
+    "💃 Haz lo que amas.",
 
-        currentMessage++;
+    "🎀 Todo gran bailarín comenzó con un primer paso."
 
-        if (currentMessage >= messages.length) {
+];
 
-            currentMessage = 0;
+const welcomeMessage =
+document.getElementById("welcomeMessage");
+
+const quote =
+document.getElementById("quote");
+
+let messageIndex = 0;
+let quoteIndex = 0;
+
+
+/* MENSAJES ROTATIVOS */
+
+function rotateMessages(){
+
+    if(!welcomeMessage) return;
+
+    welcomeMessage.style.opacity = 0;
+
+    setTimeout(()=>{
+
+        messageIndex++;
+
+        if(messageIndex >= messages.length){
+
+            messageIndex = 0;
 
         }
 
-        welcome.innerHTML = messages[currentMessage];
+        welcomeMessage.innerHTML =
+        messages[messageIndex];
 
-        welcome.style.opacity = 1;
+        welcomeMessage.style.opacity = 1;
 
-    }, 400);
+    },400);
 
 }
 
-setInterval(changeMessage, 5000);
+setInterval(
+    rotateMessages,
+    5000
+);
 
 
-/* ---------- RELOJ ---------- */
+/* FRASES ROTATIVAS */
 
-const clock = document.getElementById("clock");
+function rotateQuotes(){
 
-const dateLabel = document.getElementById("date");
+    if(!quote) return;
 
-const greeting = document.getElementById("greeting");
+    quote.style.opacity = 0;
+
+    setTimeout(()=>{
+
+        quoteIndex++;
+
+        if(quoteIndex >= quotes.length){
+
+            quoteIndex = 0;
+
+        }
+
+        quote.innerHTML =
+        quotes[quoteIndex];
+
+        quote.style.opacity = 1;
+
+    },400);
+
+}
+
+setInterval(
+    rotateQuotes,
+    8000
+);
 
 
-function updateClock() {
+/* RELOJ Y FECHA */
+
+const clock =
+document.getElementById("clock");
+
+const dateElement =
+document.getElementById("date");
+
+const greeting =
+document.getElementById("greeting");
+
+
+function updateDateTime(){
 
     const now = new Date();
 
-    /* Hora */
+    const time =
+    now.toLocaleTimeString(
+        "es-GT",
+        {
+            hour:"2-digit",
+            minute:"2-digit"
+        }
+    );
 
-    const time = now.toLocaleTimeString("es-GT", {
-
-        hour: "2-digit",
-
-        minute: "2-digit"
-
-    });
-
-    if (clock) {
+    if(clock){
 
         clock.innerHTML = time;
 
     }
 
-    /* Fecha */
+    const date =
+    now.toLocaleDateString(
+        "es-GT",
+        {
+            weekday:"long",
+            day:"numeric",
+            month:"long",
+            year:"numeric"
+        }
+    );
 
-    const date = now.toLocaleDateString("es-GT", {
+    if(dateElement){
 
-        weekday: "long",
-
-        day: "numeric",
-
-        month: "long",
-
-        year: "numeric"
-
-    });
-
-    if (dateLabel) {
-
-        dateLabel.innerHTML =
-            date.charAt(0).toUpperCase() +
-            date.slice(1);
+        dateElement.innerHTML =
+        date.charAt(0).toUpperCase() +
+        date.slice(1);
 
     }
 
-    /* Saludo */
+    const hour =
+    now.getHours();
 
-    const hour = now.getHours();
+    let greetingText =
+    "";
 
-    let text = "";
+    if(hour < 12){
 
-    if (hour < 12) {
-
-        text = "☀️ Buenos días";
-
-    }
-
-    else if (hour < 18) {
-
-        text = "🌤️ Buenas tardes";
+        greetingText =
+        "☀️ Buenos días";
 
     }
 
-    else {
+    else if(hour < 18){
 
-        text = "🌙 Buenas noches";
+        greetingText =
+        "🌤️ Buenas tardes";
 
     }
 
-    if (greeting) {
+    else{
 
-        greeting.innerHTML = text;
+        greetingText =
+        "🌙 Buenas noches";
+
+    }
+
+    if(greeting){
+
+        greeting.innerHTML =
+        greetingText;
 
     }
 
 }
 
-updateClock();
+updateDateTime();
 
-setInterval(updateClock, 1000);
-
-
-/* ---------- EFECTO BOTONES ---------- */
-
-const buttons = document.querySelectorAll(".btn");
-
-buttons.forEach(btn => {
-
-    btn.addEventListener("touchstart", () => {
-
-        btn.style.transform = "scale(.96)";
-
-    });
-
-    btn.addEventListener("touchend", () => {
-
-        btn.style.transform = "";
-
-    });
-
-    btn.addEventListener("mousedown", () => {
-
-        btn.style.transform = "scale(.96)";
-
-    });
-
-    btn.addEventListener("mouseup", () => {
-
-        btn.style.transform = "";
-
-    });
-
-});
+setInterval(
+    updateDateTime,
+    1000
+);
 
 
-/* ---------- ANIMACIÓN SUAVE MENSAJES ---------- */
+/* ANIMACIÓN DE ENTRADA */
 
-if (welcome) {
+window.addEventListener(
+    "load",
+    ()=>{
 
-    welcome.style.transition = "opacity .4s ease";
+        document.body.style.opacity =
+        "0";
 
-}
+        document.body.style.transition =
+        "opacity .8s ease";
 
+        setTimeout(()=>{
 
-/* ---------- EFECTO ENTRADA ---------- */
+            document.body.style.opacity =
+            "1";
 
-window.addEventListener("load", () => {
+        },100);
 
-    document.body.style.opacity = "0";
-
-    document.body.style.transition = "opacity .8s";
-
-    setTimeout(() => {
-
-        document.body.style.opacity = "1";
-
-    }, 100);
-
-});
+    }
+);
