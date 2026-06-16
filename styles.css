@@ -1,6 +1,6 @@
 /* ========================= */
 /* MOVE DANCE ACADEMY        */
-/* Premium Reception UI      */
+/* RECEPCIÓN PREMIUM         */
 /* ========================= */
 
 *{
@@ -21,9 +21,9 @@ body{
 
 }
 
-/* ------------------------- */
-/* Fondo                     */
-/* ------------------------- */
+/* ========================= */
+/* FONDO PREMIUM             */
+/* ========================= */
 
 body{
 
@@ -31,9 +31,12 @@ body{
     justify-content:center;
     align-items:center;
 
-    background:linear-gradient(
+    padding:25px;
+
+    background:
+    linear-gradient(
         -45deg,
-        #fffdfd,
+        #ffffff,
         #fff5fb,
         #ffe8f4,
         #fff0fa,
@@ -42,9 +45,7 @@ body{
 
     background-size:400% 400%;
 
-    animation:gradientFlow 18s ease infinite;
-
-    padding:30px;
+    animation:gradientFlow 20s ease infinite;
 
 }
 
@@ -64,9 +65,9 @@ body{
 
 }
 
-/* ------------------------- */
-/* Fondo decorativo          */
-/* ------------------------- */
+/* ========================= */
+/* BURBUJAS DECORATIVAS      */
+/* ========================= */
 
 .background{
 
@@ -83,9 +84,9 @@ body{
 
     border-radius:50%;
 
-    filter:blur(30px);
+    filter:blur(40px);
 
-    opacity:.18;
+    opacity:.20;
 
     animation:floatBubble 12s infinite ease-in-out;
 
@@ -108,10 +109,10 @@ body{
     width:240px;
     height:240px;
 
-    background:#ffd8ec;
+    background:#ffd6ea;
 
     right:5%;
-    top:20%;
+    top:18%;
 
     animation-delay:2s;
 
@@ -119,13 +120,13 @@ body{
 
 .floating3{
 
-    width:150px;
-    height:150px;
+    width:160px;
+    height:160px;
 
-    background:#ffc0df;
+    background:#ffc7e2;
 
-    bottom:12%;
     left:18%;
+    bottom:10%;
 
     animation-delay:4s;
 
@@ -138,8 +139,8 @@ body{
 
     background:#ffe7f4;
 
-    bottom:5%;
     right:10%;
+    bottom:5%;
 
     animation-delay:1s;
 
@@ -150,16 +151,16 @@ body{
     50%{
 
         transform:
-            translateY(-20px)
-            translateX(15px);
+        translateY(-20px)
+        translateX(15px);
 
     }
 
 }
 
-/* ------------------------- */
-/* Tarjeta principal         */
-/* ------------------------- */
+/* ========================= */
+/* TARJETA PRINCIPAL         */
+/* ========================= */
 
 .container{
 
@@ -171,7 +172,7 @@ body{
     border-radius:35px;
 
     background:
-        rgba(255,255,255,.42);
+    rgba(255,255,255,.42);
 
     backdrop-filter:blur(18px);
 
@@ -179,35 +180,33 @@ body{
 
     box-shadow:
 
-        0 15px 45px rgba(240,61,151,.15),
+    0 15px 45px rgba(240,61,151,.15),
 
-        0 3px 12px rgba(0,0,0,.05);
+    0 3px 12px rgba(0,0,0,.05);
 
     text-align:center;
 
-    position:relative;
-
 }
 
-/* ------------------------- */
-/* Logo                      */
-/* ------------------------- */
+/* ========================= */
+/* LOGO                      */
+/* ========================= */
 
 .logo{
 
-    width:82%;
-    max-width:360px;
+    width:95%;
+    max-width:430px;
 
-    margin-bottom:18px;
+    margin-bottom:15px;
 
-    animation:logoFloat 4s ease-in-out infinite;
+    animation:
+    logoFloat 5s ease-in-out infinite;
 
     filter:
-
-        drop-shadow(
-            0 10px 18px
-            rgba(240,61,151,.18)
-        );
+    drop-shadow(
+    0 15px 25px
+    rgba(240,61,151,.22)
+    );
 
 }
 
@@ -216,13 +215,15 @@ body{
     50%{
 
         transform:
-            translateY(-8px);
+        translateY(-10px);
 
     }
 
 }
 
-/* ------------------------- */
+/* ========================= */
+/* SALUDO                    */
+/* ========================= */
 
 .greeting{
 
@@ -236,43 +237,59 @@ body{
 
 }
 
+/* ========================= */
+/* RELOJ                     */
+/* ========================= */
+
 .clock{
 
-    font-size:46px;
+    font-size:58px;
 
     font-weight:800;
 
     color:#ef4b9b;
 
+    letter-spacing:-2px;
+
 }
+
+/* ========================= */
+/* FECHA                     */
+/* ========================= */
 
 .date{
 
     margin-top:5px;
 
+    margin-bottom:20px;
+
     color:#777;
 
     font-size:18px;
 
-    margin-bottom:18px;
-
 }
+
+/* ========================= */
+/* MENSAJES                  */
+/* ========================= */
 
 .welcome{
 
-    font-size:23px;
+    min-height:40px;
 
-    color:#777;
+    margin-bottom:20px;
 
-    margin-bottom:24px;
+    font-size:22px;
 
-    min-height:34px;
+    color:#666;
+
+    transition:opacity .4s ease;
 
 }
 
-/* ------------------------- */
-/* Botones                   */
-/* ------------------------- */
+/* ========================= */
+/* BOTONES                   */
+/* ========================= */
 
 .btn{
 
@@ -284,116 +301,181 @@ body{
 
     padding:22px;
 
-    border-radius:22px;
+    border-radius:24px;
 
     color:white;
 
-    font-size:27px;
+    font-size:26px;
 
     font-weight:700;
 
-    letter-spacing:.2px;
-
     background:
+    rgba(239,75,155,.92);
 
-        rgba(239,75,155,.92);
+    border:1px solid
+    rgba(255,255,255,.25);
 
     backdrop-filter:blur(12px);
 
     box-shadow:
 
-        0 10px 20px
-        rgba(239,75,155,.22);
+    0 10px 20px
+    rgba(239,75,155,.20);
 
     transition:
-
-        transform .18s,
-
-        box-shadow .18s,
-
-        filter .18s;
+    transform .18s,
+    box-shadow .18s;
 
 }
-
-/* Hover */
 
 .btn:hover{
 
     transform:
-
-        translateY(-3px)
-
-        scale(1.02);
+    translateY(-3px)
+    scale(1.02);
 
 }
-
-/* Presionar */
 
 .btn:active{
 
     transform:
-
-        scale(.95);
-
-    filter:brightness(.92);
+    scale(.96);
 
 }
 
-/* ------------------------- */
-/* Botón Dorado              */
-/* ------------------------- */
+/* ========================= */
+/* BOTÓN DORADO              */
+/* ========================= */
 
 .btn-gold{
 
     background:
+    linear-gradient(
+    135deg,
+    #FFD700,
+    #FFC107,
+    #FFE082,
+    #F4B400
+    );
 
-        linear-gradient(
-            135deg,
-            #FFD700,
-            #FFC107,
-            #F4B400
-        );
+    color:#6f4f00;
 
-    color:#7c5400;
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn-gold::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:100px;
+    height:100%;
+
+    background:
+
+    linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.8),
+    transparent
+    );
 
     animation:
-
-        goldGlow 2s infinite alternate;
+    shine 3s infinite;
 
 }
 
-@keyframes goldGlow{
+@keyframes shine{
 
-    from{
+    100%{
 
-        box-shadow:
-
-            0 0 10px
-            rgba(255,215,0,.35);
-
-    }
-
-    to{
-
-        box-shadow:
-
-            0 0 26px
-            rgba(255,215,0,.8);
+        left:140%;
 
     }
 
 }
 
-/* ------------------------- */
+/* ========================= */
+/* FRASE INSPIRADORA         */
+/* ========================= */
+
+.quote{
+
+    margin-top:18px;
+
+    padding:16px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.35);
+
+    color:#777;
+
+    font-size:18px;
+
+    font-style:italic;
+
+    transition:
+    opacity .4s ease;
+
+}
+
+/* ========================= */
+/* STATUS                    */
+/* ========================= */
+
+.status{
+
+    margin-top:15px;
+
+    color:#27ae60;
+
+    font-weight:700;
+
+}
+
+/* ========================= */
+/* FOOTER                    */
+/* ========================= */
 
 footer{
 
-    margin-top:28px;
+    margin-top:25px;
 
     color:#999;
 
     font-size:18px;
 
     font-weight:600;
+
+}
+
+/* ========================= */
+/* REDMI                     */
+/* ========================= */
+
+@media(max-width:600px){
+
+    .btn{
+
+        font-size:22px;
+
+        padding:20px;
+
+    }
+
+    .clock{
+
+        font-size:50px;
+
+    }
 
 }
