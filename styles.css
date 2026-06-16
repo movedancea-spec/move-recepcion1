@@ -1,1 +1,399 @@
-body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(-45deg,#fff,#fff1f7,#ffe5f2,#fff);background-size:400% 400%;animation:bg 15s infinite;display:flex;justify-content:center;align-items:center;min-height:100vh}@keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}.card{max-width:560px;width:92%;background:rgba(255,255,255,.5);backdrop-filter:blur(12px);padding:24px;border-radius:28px;text-align:center}.logo{width:90%;max-width:420px;animation:f 4s ease-in-out infinite}@keyframes f{50%{transform:translateY(-8px)}}.btn{display:block;margin:12px;padding:18px;border-radius:20px;text-decoration:none;background:#ec4899;color:#fff;font-weight:bold}.gold{background:linear-gradient(135deg,#FFD700,#FFC107,#F4B400);color:#6b4b00}
+/* ========================= */
+/* MOVE DANCE ACADEMY        */
+/* Premium Reception UI      */
+/* ========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    min-height:100vh;
+
+    font-family:'Poppins',sans-serif;
+
+    overflow-x:hidden;
+
+}
+
+/* ------------------------- */
+/* Fondo                     */
+/* ------------------------- */
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        -45deg,
+        #fffdfd,
+        #fff5fb,
+        #ffe8f4,
+        #fff0fa,
+        #ffffff
+    );
+
+    background-size:400% 400%;
+
+    animation:gradientFlow 18s ease infinite;
+
+    padding:30px;
+
+}
+
+@keyframes gradientFlow{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+/* ------------------------- */
+/* Fondo decorativo          */
+/* ------------------------- */
+
+.background{
+
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+.floating{
+
+    position:fixed;
+
+    border-radius:50%;
+
+    filter:blur(30px);
+
+    opacity:.18;
+
+    animation:floatBubble 12s infinite ease-in-out;
+
+}
+
+.floating1{
+
+    width:180px;
+    height:180px;
+
+    background:#ff9ed2;
+
+    left:5%;
+    top:10%;
+
+}
+
+.floating2{
+
+    width:240px;
+    height:240px;
+
+    background:#ffd8ec;
+
+    right:5%;
+    top:20%;
+
+    animation-delay:2s;
+
+}
+
+.floating3{
+
+    width:150px;
+    height:150px;
+
+    background:#ffc0df;
+
+    bottom:12%;
+    left:18%;
+
+    animation-delay:4s;
+
+}
+
+.floating4{
+
+    width:220px;
+    height:220px;
+
+    background:#ffe7f4;
+
+    bottom:5%;
+    right:10%;
+
+    animation-delay:1s;
+
+}
+
+@keyframes floatBubble{
+
+    50%{
+
+        transform:
+            translateY(-20px)
+            translateX(15px);
+
+    }
+
+}
+
+/* ------------------------- */
+/* Tarjeta principal         */
+/* ------------------------- */
+
+.container{
+
+    width:100%;
+    max-width:560px;
+
+    padding:35px;
+
+    border-radius:35px;
+
+    background:
+        rgba(255,255,255,.42);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    box-shadow:
+
+        0 15px 45px rgba(240,61,151,.15),
+
+        0 3px 12px rgba(0,0,0,.05);
+
+    text-align:center;
+
+    position:relative;
+
+}
+
+/* ------------------------- */
+/* Logo                      */
+/* ------------------------- */
+
+.logo{
+
+    width:82%;
+    max-width:360px;
+
+    margin-bottom:18px;
+
+    animation:logoFloat 4s ease-in-out infinite;
+
+    filter:
+
+        drop-shadow(
+            0 10px 18px
+            rgba(240,61,151,.18)
+        );
+
+}
+
+@keyframes logoFloat{
+
+    50%{
+
+        transform:
+            translateY(-8px);
+
+    }
+
+}
+
+/* ------------------------- */
+
+.greeting{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#ef4b9b;
+
+    margin-bottom:8px;
+
+}
+
+.clock{
+
+    font-size:46px;
+
+    font-weight:800;
+
+    color:#ef4b9b;
+
+}
+
+.date{
+
+    margin-top:5px;
+
+    color:#777;
+
+    font-size:18px;
+
+    margin-bottom:18px;
+
+}
+
+.welcome{
+
+    font-size:23px;
+
+    color:#777;
+
+    margin-bottom:24px;
+
+    min-height:34px;
+
+}
+
+/* ------------------------- */
+/* Botones                   */
+/* ------------------------- */
+
+.btn{
+
+    display:block;
+
+    text-decoration:none;
+
+    margin-bottom:16px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    color:white;
+
+    font-size:27px;
+
+    font-weight:700;
+
+    letter-spacing:.2px;
+
+    background:
+
+        rgba(239,75,155,.92);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+
+        0 10px 20px
+        rgba(239,75,155,.22);
+
+    transition:
+
+        transform .18s,
+
+        box-shadow .18s,
+
+        filter .18s;
+
+}
+
+/* Hover */
+
+.btn:hover{
+
+    transform:
+
+        translateY(-3px)
+
+        scale(1.02);
+
+}
+
+/* Presionar */
+
+.btn:active{
+
+    transform:
+
+        scale(.95);
+
+    filter:brightness(.92);
+
+}
+
+/* ------------------------- */
+/* Botón Dorado              */
+/* ------------------------- */
+
+.btn-gold{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #FFD700,
+            #FFC107,
+            #F4B400
+        );
+
+    color:#7c5400;
+
+    animation:
+
+        goldGlow 2s infinite alternate;
+
+}
+
+@keyframes goldGlow{
+
+    from{
+
+        box-shadow:
+
+            0 0 10px
+            rgba(255,215,0,.35);
+
+    }
+
+    to{
+
+        box-shadow:
+
+            0 0 26px
+            rgba(255,215,0,.8);
+
+    }
+
+}
+
+/* ------------------------- */
+
+footer{
+
+    margin-top:28px;
+
+    color:#999;
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
