@@ -93,7 +93,25 @@ const successMessages=[
 "💕 Sigue creciendo cada día."
 
 ];
+const welcomeTitles=[
 
+"💖 ¡Qué alegría verte!",
+
+"🩰 ¡Lista para bailar!",
+
+"🌸 ¡Bienvenida a MOVE!",
+
+"⭐ ¡Nos encanta verte!",
+
+"✨ ¡Qué gusto tenerte aquí!",
+
+"💕 ¡Hoy será un gran día!",
+
+"💃 ¡Es hora de bailar!",
+
+"🌈 ¡Vamos a disfrutar esta clase!"
+
+];
 // -------------------------------------
 // VARIABLES
 // -------------------------------------
@@ -424,7 +442,26 @@ void photoContainer.offsetWidth;
 // Agregar animación
 photoContainer.classList.add("photo-show");
 
-studentName.innerHTML=datos.nombre;
+const titulo = welcomeTitles[
+Math.floor(
+Math.random()*welcomeTitles.length
+)];
+
+studentName.innerHTML=`
+
+<div class="welcome-title">
+
+${titulo}
+
+</div>
+
+<div class="student-real-name">
+
+${datos.nombre}
+
+</div>
+
+`;
 
 const frase=
 
