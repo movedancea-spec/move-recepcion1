@@ -169,7 +169,7 @@ function mostrarBienvenida(datos){
 
         location.href="index.html";
 
-    },5000);
+    },9000);
 
 }
 
