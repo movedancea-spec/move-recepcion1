@@ -5,11 +5,17 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MOVE - Registro de Asistencia</title>
+<title>MOVE ACCESS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#ef4b9b">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="biometrico.css">
 
@@ -17,43 +23,156 @@
 
 <body>
 
-<div class="card">
+<!-- Fondo -->
 
-    <h1>MOVE</h1>
+<div class="background"></div>
 
-    <h2>Registro de Asistencia</h2>
+<div class="floating floating1"></div>
+<div class="floating floating2"></div>
+<div class="floating floating3"></div>
+<div class="floating floating4"></div>
 
-    <p>Ingresa tu código</p>
+<div id="particles"></div>
 
-    <div id="photoContainer" style="display:none; margin:20px 0;">
+<!-- Tarjeta -->
 
-        <img
-            id="photo"
-            style="
-                width:140px;
-                height:140px;
-                border-radius:50%;
-                object-fit:cover;
-                border:5px solid #ef4b9b;
-                box-shadow:0 10px 25px rgba(239,75,155,.25);
-            ">
+<main class="container">
 
-    </div>
+    <!-- Logo -->
 
-    <div id="dots" class="dots">
+    <img
+        src="logo.png"
+        class="logo"
+        alt="MOVE">
 
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+    <!-- Título -->
+
+    <div id="title" class="title">
+
+        Registro de Asistencia
 
     </div>
 
-    <div id="message" class="message"></div>
+    <!-- Saludo -->
 
-    <div id="pad" class="pad"></div>
+    <div id="greeting" class="greeting">
 
-</div>
+        Bienvenida
+
+    </div>
+
+    <!-- Hora -->
+
+    <div id="clock" class="clock">
+
+        00:00
+
+    </div>
+
+    <!-- Foto -->
+
+    <div
+        id="photoContainer"
+        class="photo-container">
+
+        <div class="photo-ring">
+
+            <img
+                id="photo"
+                class="photo">
+
+        </div>
+
+    </div>
+
+    <!-- Nombre -->
+
+    <div id="studentName" class="student-name">
+
+    </div>
+
+    <!-- Mensaje -->
+
+    <div id="message" class="message">
+
+        Ingresa tu código
+
+    </div>
+
+    <!-- Cumpleaños -->
+
+    <div
+        id="birthday"
+        class="birthday">
+
+    </div>
+
+    <!-- Hora registro -->
+
+    <div
+        id="registerTime"
+        class="register-time">
+
+    </div>
+
+    <!-- Código -->
+
+    <div
+        id="dots"
+        class="dots">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <!-- Teclado -->
+
+    <div
+        id="pad"
+        class="pad">
+
+    </div>
+
+</main>
+
+<!-- Confetti -->
+
+<canvas id="confetti"></canvas>
+
+<!-- Audios -->
+
+<audio
+id="successSound"
+preload="auto">
+
+<source
+src="success.mp3"
+type="audio/mpeg">
+
+</audio>
+
+<audio
+id="errorSound"
+preload="auto">
+
+<source
+src="error.mp3"
+type="audio/mpeg">
+
+</audio>
+
+<audio
+id="keySound"
+preload="auto">
+
+<source
+src="key.mp3"
+type="audio/mpeg">
+
+</audio>
 
 <script src="biometrico.js"></script>
 
