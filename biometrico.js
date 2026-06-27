@@ -475,30 +475,16 @@ Math.random()*successMessages.length
 
 ];
 
-message.innerHTML=frase;
-
 const ahora = new Date();
 
-const ahora = new Date();
-
-const hora = ahora.toLocaleTimeString("es-GT",{
+registerTime.innerHTML =
+"🕒 " +
+ahora.toLocaleTimeString("es-GT",{
     timeZone:"America/Guatemala",
     hour:"2-digit",
     minute:"2-digit",
     hour12:true
 });
-
-const fecha = ahora.toLocaleDateString("es-GT",{
-    timeZone:"America/Guatemala",
-    weekday:"long",
-    day:"numeric",
-    month:"long"
-});
-
-registerTime.innerHTML = `
-🕒 ${hora}<br>
-📅 ${fecha}
-`;
 
 birthday.innerHTML="";
 
