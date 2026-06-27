@@ -650,3 +650,38 @@ height:150px;
 }
 
 }
+/* =====================================
+   FOTO PREMIUM
+===================================== */
+
+.photo-show{
+
+    animation:photoAppear .6s ease forwards;
+
+}
+
+@keyframes photoAppear{
+
+    0%{
+
+        opacity:0;
+
+        transform:scale(.65);
+
+    }
+
+    60%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
