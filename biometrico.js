@@ -93,25 +93,7 @@ const successMessages=[
 "💕 Sigue creciendo cada día."
 
 ];
-const welcomeTitles=[
 
-"💖 ¡Qué alegría verte!",
-
-"🩰 ¡Lista para bailar!",
-
-"🌸 ¡Bienvenida a MOVE!",
-
-"⭐ ¡Nos encanta verte!",
-
-"✨ ¡Qué gusto tenerte aquí!",
-
-"💕 ¡Hoy será un gran día!",
-
-"💃 ¡Es hora de bailar!",
-
-"🌈 ¡Vamos a disfrutar esta clase!"
-
-];
 // -------------------------------------
 // VARIABLES
 // -------------------------------------
@@ -175,66 +157,97 @@ setInterval(updateClock,1000);
 
 function rotateMessage(){
 
-    // Si ya hay una alumna registrada, no cambiar mensajes
-    if(studentName.innerHTML.trim()!=="") return;
+if(studentName.innerHTML!="") return;
 
-    message.animate(
+message.animate(
 
-        [
-            {
-                opacity:1,
-                transform:"translateY(0px)"
-            },
-            {
-                opacity:0,
-                transform:"translateY(15px)"
-            }
-        ],
+[
 
-        {
-            duration:300,
-            fill:"forwards",
-            easing:"ease"
-        }
+{
 
-    );
+opacity:1,
 
-    setTimeout(()=>{
+transform:"translateY(0px)"
 
-        waitingIndex++;
+},
 
-        if(waitingIndex>=waitingMessages.length){
+{
 
-            waitingIndex=0;
+opacity:0,
 
-        }
-
-        message.innerHTML=waitingMessages[waitingIndex];
-
-        message.animate(
-
-            [
-                {
-                    opacity:0,
-                    transform:"translateY(-15px)"
-                },
-                {
-                    opacity:1,
-                    transform:"translateY(0px)"
-                }
-            ],
-
-            {
-                duration:400,
-                fill:"forwards",
-                easing:"ease-out"
-            }
-
-        );
-
-    },300);
+transform:"translateY(12px)"
 
 }
+
+],
+
+{
+
+duration:250,
+
+fill:"forwards"
+
+}
+
+);
+
+setTimeout(()=>{
+
+waitingIndex++;
+
+if(waitingIndex>=waitingMessages.length){
+
+waitingIndex=0;
+
+}
+
+message.innerHTML=waitingMessages[waitingIndex];
+
+message.animate(
+
+[
+
+{
+
+opacity:0,
+
+transform:"translateY(-12px)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"translateY(0px)"
+
+}
+
+],
+
+{
+
+duration:350,
+
+fill:"forwards"
+
+}
+
+);
+
+},260);
+
+}
+
+
+
+setInterval(
+
+rotateMessage,
+
+5000
+
+);
 // -------------------------------------
 // CREAR TECLADO
 // -------------------------------------
@@ -423,45 +436,15 @@ successSound.play().catch(()=>{});
 
 }
 
-// Mostrar foto
+photoContainer.style.display="flex";
+
 if(datos.foto && datos.foto.length){
 
-    photo.src = datos.foto[0].url;
+photo.src=datos.foto[0].url;
 
 }
 
-// Mostrar contenedor
-photoContainer.style.display="flex";
-
-// Reiniciar animación
-photoContainer.classList.remove("photo-show");
-
-// Forzar reflow para reiniciar la animación
-void photoContainer.offsetWidth;
-
-// Agregar animación
-photoContainer.classList.add("photo-show");
-
-const titulo = welcomeTitles[
-Math.floor(
-Math.random()*welcomeTitles.length
-)];
-
-studentName.innerHTML=`
-
-<div class="welcome-title">
-
-${titulo}
-
-</div>
-
-<div class="student-real-name">
-
-${datos.nombre}
-
-</div>
-
-`;
+studentName.innerHTML=datos.nombre;
 
 const frase=
 
@@ -475,33 +458,16 @@ Math.random()*successMessages.length
 
 ];
 
-const ahora = new Date();
-
-const ahora = new Date();
-
-const hora = ahora.toLocaleTimeString("es-GT",{
-    timeZone:"America/Guatemala",
-    hour:"2-digit",
-    minute:"2-digit",
-    hour12:true
-});
-
-const fecha = ahora.toLocaleDateString("es-GT",{
-    timeZone:"America/Guatemala",
-    weekday:"long",
-    day:"numeric",
-    month:"long"
-});
+message.innerHTML=frase;
 
 const ahora = new Date();
 
 registerTime.innerHTML =
 "🕒 " +
 ahora.toLocaleTimeString("es-GT",{
-    timeZone:"America/Guatemala",
-    hour:"2-digit",
-    minute:"2-digit",
-    hour12:true
+hour:"2-digit",
+minute:"2-digit",
+hour12:true
 });
 
 birthday.innerHTML="";
@@ -729,48 +695,3 @@ actualizarDots();
 message.innerHTML=
 
 waitingMessages[0];
-// ========================================
-// ESTRELLAS
-// ========================================
-
-const particles = document.getElementById("particles");
-
-function crearEstrella(){
-
-const estrella=document.createElement("div");
-
-estrella.className="star";
-
-estrella.style.left=
-
-Math.random()*100+"%";
-
-estrella.style.top=
-
-Math.random()*100+"%";
-
-estrella.style.animationDuration=
-
-3+Math.random()*5+"s";
-
-estrella.style.opacity=
-
-Math.random();
-
-particles.appendChild(estrella);
-
-setTimeout(()=>{
-
-estrella.remove();
-
-},8000);
-
-}
-
-setInterval(
-
-crearEstrella,
-
-350
-
-);
