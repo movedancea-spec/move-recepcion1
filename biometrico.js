@@ -706,3 +706,48 @@ actualizarDots();
 message.innerHTML=
 
 waitingMessages[0];
+// ========================================
+// ESTRELLAS
+// ========================================
+
+const particles = document.getElementById("particles");
+
+function crearEstrella(){
+
+const estrella=document.createElement("div");
+
+estrella.className="star";
+
+estrella.style.left=
+
+Math.random()*100+"%";
+
+estrella.style.top=
+
+Math.random()*100+"%";
+
+estrella.style.animationDuration=
+
+3+Math.random()*5+"s";
+
+estrella.style.opacity=
+
+Math.random();
+
+particles.appendChild(estrella);
+
+setTimeout(()=>{
+
+estrella.remove();
+
+},8000);
+
+}
+
+setInterval(
+
+crearEstrella,
+
+350
+
+);
