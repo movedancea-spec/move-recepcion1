@@ -493,8 +493,16 @@ const fecha = ahora.toLocaleDateString("es-GT",{
     month:"long"
 });
 
+const ahora = new Date();
+
 registerTime.innerHTML =
-"🕒 "+datos.hora;
+"🕒 " +
+ahora.toLocaleTimeString("es-GT",{
+    timeZone:"America/Guatemala",
+    hour:"2-digit",
+    minute:"2-digit",
+    hour12:true
+});
 
 birthday.innerHTML="";
 
