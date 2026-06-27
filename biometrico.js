@@ -516,7 +516,7 @@ fill:"forwards"
 
 setTimeout(()=>{
 
-window.location.replace("index.html");
+window.location.href="https://movedancea-spec.github.io/move-recepcion1/index.html";
 
 },7000);
 
