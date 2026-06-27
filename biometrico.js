@@ -159,9 +159,37 @@ function rotateMessage(){
 
 if(studentName.innerHTML!="") return;
 
-message.style.opacity=0;
+message.animate(
 
-message.style.transform="translateY(10px)";
+[
+
+{
+
+opacity:1,
+
+transform:"translateY(0px)"
+
+},
+
+{
+
+opacity:0,
+
+transform:"translateY(12px)"
+
+}
+
+],
+
+{
+
+duration:250,
+
+fill:"forwards"
+
+}
+
+);
 
 setTimeout(()=>{
 
@@ -170,6 +198,44 @@ waitingIndex++;
 if(waitingIndex>=waitingMessages.length){
 
 waitingIndex=0;
+
+}
+
+message.innerHTML=waitingMessages[waitingIndex];
+
+message.animate(
+
+[
+
+{
+
+opacity:0,
+
+transform:"translateY(-12px)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"translateY(0px)"
+
+}
+
+],
+
+{
+
+duration:350,
+
+fill:"forwards"
+
+}
+
+);
+
+},260);
 
 }
 
