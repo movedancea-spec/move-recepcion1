@@ -1,186 +1,89 @@
-const pad = document.getElementById("pad");
-const dots = document.getElementById("dots");
-const msg = document.getElementById("message");
-const photo = document.getElementById("photo");
-const photoContainer = document.getElementById("photoContainer");
+const WORKER_URL="https://move-access.movedancea.workers.dev";
 
-let codigo = "";
+const pad=document.getElementById("pad");
+const dots=document.getElementById("dots");
+const msg=document.getElementById("message");
+const studentName=document.getElementById("studentName");
+const photo=document.getElementById("photo");
+const photoContainer=document.getElementById("photoContainer");
+const greeting=document.getElementById("greeting");
+const clock=document.getElementById("clock");
+const registerTime=document.getElementById("registerTime");
+const birthday=document.getElementById("birthday");
 
-// URL de tu Worker
-const WORKER_URL = "https://move-access.movedancea.workers.dev";
+let codigo="";
 
-// Teclado
-const teclas = [
-    "1","2","3",
-    "4","5","6",
-    "7","8","9",
-    "⌫","0","✓"
-];
-
-teclas.forEach(tecla=>{
-
-    const boton = document.createElement("button");
-    boton.textContent = tecla;
-
-    boton.addEventListener("click",()=>{
-
-        presionar(tecla);
-
-    });
-
-    pad.appendChild(boton);
-
+["1","2","3","4","5","6","7","8","9","⌫","0","✓"].forEach(t=>{
+ const b=document.createElement("button");
+ b.textContent=t;
+ b.onclick=()=>presionar(t);
+ pad.appendChild(b);
 });
 
-function actualizarPuntos(){
+function actualizarHora(){
+ const now=new Date();
+ clock.textContent=now.toLocaleTimeString("es-GT",{hour:"2-digit",minute:"2-digit"});
+ const h=now.getHours();
+ greeting.textContent=h<12?"☀️ Buenos días":h<18?"🌤️ Buenas tardes":"🌙 Buenas noches";
+}
+setInterval(actualizarHora,1000);
+actualizarHora();
 
-    dots.innerHTML="";
-
-    for(let i=0;i<codigo.length;i++){
-
-        const punto=document.createElement("span");
-        punto.classList.add("fill");
-
-        dots.appendChild(punto);
-
-    }
-
-    for(let i=codigo.length;i<4;i++){
-
-        dots.innerHTML += "<span></span>";
-
-    }
-
+function actualizarDots(){
+ dots.innerHTML="";
+ for(let i=0;i<4;i++){
+   const s=document.createElement("span");
+   if(i<codigo.length)s.classList.add("fill");
+   dots.appendChild(s);
+ }
 }
 
-async function presionar(tecla){
-
-    if(tecla==="⌫"){
-
-        codigo=codigo.slice(0,-1);
-
-        actualizarPuntos();
-
-        return;
-
-    }
-
-    if(tecla==="✓"){
-
-        if(codigo.length===0){
-
-            mostrarError("Ingresa un código");
-
-            return;
-
-        }
-
-        buscarCodigo();
-
-        return;
-
-    }
-
-    if(codigo.length>=6){
-
-        return;
-
-    }
-
-    codigo+=tecla;
-
-    actualizarPuntos();
-
+async function presionar(t){
+ if(t==="⌫"){codigo=codigo.slice(0,-1);actualizarDots();return;}
+ if(t==="✓"){
+   if(!codigo){msg.textContent="Ingresa un código";return;}
+   return buscar();
+ }
+ if(codigo.length<6){codigo+=t;actualizarDots();}
 }
 
-async function buscarCodigo(){
-
-    try{
-
-        msg.innerHTML="⏳ Verificando...";
-
-        const respuesta = await fetch(WORKER_URL,{
-
-            method:"POST",
-
-            headers:{
-                "Content-Type":"application/json"
-            },
-
-            body:JSON.stringify({
-
-                codigo:codigo
-
-            })
-
-        });
-
-        const datos = await respuesta.json();
-
-        console.log(datos);
-
-        if(!datos.success){
-
-            mostrarError("❌ Código no encontrado");
-
-            return;
-
-        }
-
-        mostrarBienvenida(datos);
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        mostrarError("⚠ Error de conexión");
-
-    }
-
+async function buscar(){
+ msg.textContent="Verificando...";
+ try{
+   const r=await fetch(WORKER_URL,{
+     method:"POST",
+     headers:{"Content-Type":"application/json"},
+     body:JSON.stringify({codigo})
+   });
+   const data=await r.json();
+   if(!data.success){
+      limpiar();
+      msg.textContent="Código no encontrado";
+      return;
+   }
+   studentName.textContent=data.nombre||"Bienvenida";
+   msg.textContent="Asistencia registrada correctamente";
+   if(data.foto&&data.foto.length){
+      photo.src=data.foto[0].url;
+      photoContainer.style.display="flex";
+   }
+   registerTime.textContent="Registrado: "+new Date().toLocaleTimeString("es-GT",{hour:"2-digit",minute:"2-digit"});
+   if(data.cumpleHoy){birthday.textContent="🎂 ¡Feliz cumpleaños!";}
+   codigo="";
+   actualizarDots();
+   setTimeout(()=>location.href="index.html",9000);
+ }catch(e){
+   limpiar();
+   msg.textContent="Error de conexión";
+ }
 }
 
-function mostrarBienvenida(datos){
-
-    if(datos.foto && datos.foto.length){
-
-        photo.src = datos.foto[0].url;
-
-        photoContainer.style.display="block";
-
-    }
-
-    msg.innerHTML=`
-
-        <h2>✅ Bienvenida</h2>
-
-        <h1>${datos.nombre}</h1>
-
-        <p>Asistencia registrada correctamente.</p>
-
-    `;
-
-    codigo="";
-
-    actualizarPuntos();
-
-    setTimeout(()=>{
-
-        location.href="index.html";
-
-    },9000);
-
+function limpiar(){
+ codigo="";
+ actualizarDots();
+ photoContainer.style.display="none";
+ studentName.textContent="";
+ registerTime.textContent="";
+ birthday.textContent="";
 }
-
-function mostrarError(texto){
-
-    msg.innerHTML=texto;
-
-    codigo="";
-
-    actualizarPuntos();
-
-    photoContainer.style.display="none";
-
-}
+actualizarDots();
