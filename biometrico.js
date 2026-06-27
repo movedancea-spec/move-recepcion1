@@ -159,11 +159,28 @@ function rotateMessage(){
 
 if(studentName.innerHTML!="") return;
 
+message.style.opacity=0;
+
+message.style.transform="translateY(10px)";
+
+setTimeout(()=>{
+
 waitingIndex++;
 
 if(waitingIndex>=waitingMessages.length){
 
 waitingIndex=0;
+
+}
+
+message.innerHTML=
+waitingMessages[waitingIndex];
+
+message.style.opacity=1;
+
+message.style.transform="translateY(0px)";
+
+},500);
 
 }
 
