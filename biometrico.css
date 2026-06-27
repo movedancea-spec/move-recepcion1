@@ -419,6 +419,12 @@ MENSAJE
 
 .message{
 
+transition:
+
+opacity .5s,
+
+transform .5s;
+
 font-size:22px;
 
 color:#666;
