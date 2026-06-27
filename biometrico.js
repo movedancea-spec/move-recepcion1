@@ -478,13 +478,7 @@ Math.random()*successMessages.length
 const ahora = new Date();
 
 registerTime.innerHTML =
-"🕒 " +
-ahora.toLocaleTimeString("es-GT",{
-    timeZone:"America/Guatemala",
-    hour:"2-digit",
-    minute:"2-digit",
-    hour12:true
-});
+"🕒 "+datos.hora;
 
 birthday.innerHTML="";
 
