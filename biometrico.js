@@ -157,120 +157,66 @@ setInterval(updateClock,1000);
 
 function rotateMessage(){
 
-if(studentName.innerHTML!="") return;
+    // Si ya hay una alumna registrada, no cambiar mensajes
+    if(studentName.innerHTML.trim()!=="") return;
 
-message.animate(
+    message.animate(
 
-[
+        [
+            {
+                opacity:1,
+                transform:"translateY(0px)"
+            },
+            {
+                opacity:0,
+                transform:"translateY(15px)"
+            }
+        ],
 
-{
+        {
+            duration:300,
+            fill:"forwards",
+            easing:"ease"
+        }
 
-opacity:1,
+    );
 
-transform:"translateY(0px)"
+    setTimeout(()=>{
 
-},
+        waitingIndex++;
 
-{
+        if(waitingIndex>=waitingMessages.length){
 
-opacity:0,
+            waitingIndex=0;
 
-transform:"translateY(12px)"
+        }
 
-}
+        message.innerHTML=waitingMessages[waitingIndex];
 
-],
+        message.animate(
 
-{
+            [
+                {
+                    opacity:0,
+                    transform:"translateY(-15px)"
+                },
+                {
+                    opacity:1,
+                    transform:"translateY(0px)"
+                }
+            ],
 
-duration:250,
+            {
+                duration:400,
+                fill:"forwards",
+                easing:"ease-out"
+            }
 
-fill:"forwards"
+        );
 
-}
-
-);
-
-setTimeout(()=>{
-
-waitingIndex++;
-
-if(waitingIndex>=waitingMessages.length){
-
-waitingIndex=0;
-
-}
-
-message.innerHTML=waitingMessages[waitingIndex];
-
-message.animate(
-
-[
-
-{
-
-opacity:0,
-
-transform:"translateY(-12px)"
-
-},
-
-{
-
-opacity:1,
-
-transform:"translateY(0px)"
+    },300);
 
 }
-
-],
-
-{
-
-duration:350,
-
-fill:"forwards"
-
-}
-
-);
-
-},260);
-
-}
-
-message.innerHTML=
-waitingMessages[waitingIndex];
-
-message.style.opacity=1;
-
-message.style.transform="translateY(0px)";
-
-},500);
-
-}
-
-message.style.opacity=0;
-
-setTimeout(()=>{
-
-message.innerHTML=
-
-waitingMessages[waitingIndex];
-
-message.style.opacity=1;
-
-},400);
-
-}
-
-setInterval(
-
-rotateMessage,
-
-5000
-
-);
 // -------------------------------------
 // CREAR TECLADO
 // -------------------------------------
