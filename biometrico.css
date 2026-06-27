@@ -754,3 +754,96 @@ transform:translateY(0);
 }
 
 }
+/*=====================================
+PARTÍCULAS
+=====================================*/
+
+#particles{
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:0;
+
+}
+
+.star{
+
+position:absolute;
+
+width:4px;
+
+height:4px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+
+0 0 8px #ff69b4,
+
+0 0 14px #ff69b4,
+
+0 0 20px #ffd4ea;
+
+opacity:.6;
+
+animation:
+
+twinkle linear infinite,
+
+floatStar linear infinite;
+
+}
+
+@keyframes twinkle{
+
+0%,100%{
+
+opacity:.2;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+}
+
+@keyframes floatStar{
+
+0%{
+
+transform:
+
+translateY(0px)
+
+scale(.8);
+
+}
+
+100%{
+
+transform:
+
+translateY(-120px)
+
+scale(1.4);
+
+}
+
+}
