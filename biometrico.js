@@ -493,10 +493,7 @@ const fecha = ahora.toLocaleDateString("es-GT",{
     month:"long"
 });
 
-registerTime.innerHTML = `
-🕒 ${hora}<br>
-📅 ${fecha}
-`;
+registerTime.innerHTML = "PRUEBA";
 
 birthday.innerHTML="";
 
