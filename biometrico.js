@@ -477,9 +477,16 @@ Math.random()*successMessages.length
 
 message.innerHTML=frase;
 
-registerTime.innerHTML=
+const ahora = new Date();
 
-"🕒 "+datos.hora;
+registerTime.innerHTML =
+"🕒 " +
+ahora.toLocaleTimeString("es-GT",{
+    timeZone:"America/Guatemala",
+    hour:"2-digit",
+    minute:"2-digit",
+    hour12:true
+});
 
 birthday.innerHTML="";
 
