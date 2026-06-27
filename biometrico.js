@@ -405,13 +405,24 @@ successSound.play().catch(()=>{});
 
 }
 
-photoContainer.style.display="flex";
-
+// Mostrar foto
 if(datos.foto && datos.foto.length){
 
-photo.src=datos.foto[0].url;
+    photo.src = datos.foto[0].url;
 
 }
+
+// Mostrar contenedor
+photoContainer.style.display="flex";
+
+// Reiniciar animación
+photoContainer.classList.remove("photo-show");
+
+// Forzar reflow para reiniciar la animación
+void photoContainer.offsetWidth;
+
+// Agregar animación
+photoContainer.classList.add("photo-show");
 
 studentName.innerHTML=datos.nombre;
 
