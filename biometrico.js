@@ -516,9 +516,9 @@ fill:"forwards"
 
 setTimeout(()=>{
 
-reiniciar();
+window.location.href="index.html";
 
-},9000);
+},5000);
 
 }
 
